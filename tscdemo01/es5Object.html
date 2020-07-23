@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //最简单的类
+        // function Person(){
+        //     this.name = "zhangsan";
+        //     this.age = 20;
+        // }
+        // var p = new Person();
+        //构造函数和原型链里增加方法
+        // function Person(){
+        //     this.name = "zhangsan";
+        //     this.age = 20;
+        //     this.run = function(){ //实例方法
+        //         alert(this.name + " is running");
+        //     }
+        // }
+
+        // //静态方法
+        // Person.getInfo = function(){
+        //     alert("static function");
+        // }
+
+        // Person.prototype.sex = "male";
+        // Person.prototype.work = function(){
+        //     alert(this.name + "is working");
+        // }
+        // var p = new Person();
+        // p.run();
+        // p.work();
+        // Person.getInfo();
+        //es5继承
+
+        //web类继承Person类 原型链+对象冒充
+        // function Web(name,age){
+        //     Person.call(this,name,age);//对象冒充实现
+
+        // }
+
+        // var web = new Web('2',2);
+        // web.run(); //对象冒充可以继承构造函数里面的属性和方法
+        // web.work();//但是没法继承原型链上的属性
+        
+
+
+
+
+
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+            this.run = function(){ //实例方法
+                alert(this.name + " is running");
+            }
+        }
+
+        //静态方法
+        Person.getInfo = function(){
+            alert("static function");
+        }
+
+        Person.prototype.sex = "male";
+        Person.prototype.work = function(){
+            alert(this.name + "is working");
+        }
+
+        // function Web(name,age){
+
+        // }
+        // Web.prototype = new Person(); //原型类实现继承
+        // var w = new Web('a',44);
+        // w.work();
+        //原型链实现继承 可以继承构造函数的属性和方法 也可以继承原型链上的方法
+        //但原型有传参 则没法继承
+        
+        //原型链继承 加 对象冒充
+        function Web(name,age){
+            Person.call(this,name,age);
+        }
+        Web.prototype = Person.prototype;
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
